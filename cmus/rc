@@ -1,0 +1,28 @@
+#It is recommended to use the -f option, or else bind may fail
+
+#Rebind volume control
+bind -f common 9 vol -10%
+bind -f common 0 vol +10%
+
+#Shift+J for forward 1 min
+bind -f common J seek -1m
+
+#Shift+K for back 1 min
+bind -f common K seek +1m
+
+#u for previous song
+bind -f common u player-prev
+
+#i for next song
+bind -f common i player-next
+
+#p for pause/play
+bind -f common p player-pause
+
+#VIEWS
+bind -f common L view sorted
+bind -f common P view playlist
+bind -f common Q view queue
+bind -f common B view browser
+
+
