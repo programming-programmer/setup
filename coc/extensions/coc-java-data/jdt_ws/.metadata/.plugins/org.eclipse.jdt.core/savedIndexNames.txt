@@ -1,0 +1,1 @@
+INDEX VERSION 1.132+/home/mthich15/.config/coc/extensions/coc-java-data/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core

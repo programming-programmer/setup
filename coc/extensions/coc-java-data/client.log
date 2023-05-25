@@ -1,0 +1,11 @@
+2023-05-25T14:38:36.946 WARN (pid:18746) - Could not find lombok.jar path.
+2023-05-25T14:38:37.001 INFO (pid:18746) - Starting Java server with: /usr/lib/jvm/jdk-20.0.1/bin/java --add-modules=ALL-SYSTEM --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/sun.nio.fs=ALL-UNNAMED -Declipse.application=org.eclipse.jdt.ls.core.id1 -Dosgi.bundles.defaultStartLevel=4 -Declipse.product=org.eclipse.jdt.ls.core.product -Djava.import.generatesMetadataFilesAtProjectRoot=false -Dfile.encoding=UTF-8 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -Xlog:disable -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/mthich15/.config/coc/extensions/coc-java-data -jar /home/mthich15/.config/coc/extensions/node_modules/coc-java/server/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar -configuration /home/mthich15/.config/coc/extensions/coc-java-data/1.14.1/config_linux -data /home/mthich15/.config/coc/extensions/coc-java-data/jdt_ws
+2023-05-25T14:38:37.054 INFO (pid:18746) - [Warn  - 14:38:37.054] No valid workspaceFolder exists
+2023-05-25T14:38:37.690 INFO (pid:18746) - WARNING: Using incubator modules: jdk.incubator.concurrent, jdk.incubator.vector
+
+2023-05-25T14:39:06.471 INFO (pid:18746) - [Error - 14:39:06.471] Sending request textDocument/inlayHint failed.
+2023-05-25T14:39:06.483 INFO (pid:18746) -   Message: The request (id: 1, method: 'textDocument/inlayHint') has been cancelled
+  Code: -32800 
+2023-05-25T14:39:06.493 INFO (pid:18746) - [Error - 14:39:06.493] Sending request textDocument/inlayHint failed.
+2023-05-25T14:39:06.493 INFO (pid:18746) -   Message: The request (id: 2, method: 'textDocument/inlayHint') has been cancelled
+  Code: -32800 

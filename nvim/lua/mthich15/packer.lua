@@ -67,6 +67,8 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {'neoclide/coc.nvim', branch = 'release'}
+
     -- THEME
     use { "ellisonleao/gruvbox.nvim" }
 end)
