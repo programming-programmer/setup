@@ -21,6 +21,9 @@ format = '[$directory❯ ](bold yellow)'
 [package]
 disabled = true
 
+[lua]
+disabled = true
+
 [directory]
 style = 'bold yellow'
 truncate_to_repo = false
