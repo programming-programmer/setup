@@ -51,7 +51,6 @@ map E unarchive
 
 # Basic Functions
 map . set hidden!
-map <enter> open
 map R reload 
 map mf mkfile
 map md mkdir
