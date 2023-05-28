@@ -11,6 +11,7 @@ shopt -s histappend
 
 HISTSIZE=100
 HISTFILESIZE=200
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/bash/history"
 
 # Check the Window Size 
 shopt -s checkwinsize
@@ -24,10 +25,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# Aliases and bindings
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+# Load aliases and shortcuts if existent.
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
 # enable programmable completion features 
 if ! shopt -oq posix; then

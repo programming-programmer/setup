@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# profile file. Runs on login. Environmental variables are set here.
+
+# If you don't plan on reverting to bash, you can remove the link in ~/.profile
+# to clean up.
+
+# Adds `~/.local/bin` to $PATH
+# set PATH so it includes user's private ~/.local/bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Default programs:
+export EDITOR="nvim"
+
+# Clean-up, clean up, everybody everywhere!
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export LESSHSTFILE=" "

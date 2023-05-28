@@ -8,7 +8,7 @@ cmd open ${{
 	audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
 
     # Text
-    text/*|application/json|inode/x-empty|application/x-subrip) /usr/bin/nvim $fx;;
+    text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
 
     # Video
 	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
@@ -25,7 +25,7 @@ cmd mkdir ${{
 cmd mkfile ${{
   printf "File Name: "
   read ans
-  /usr/bin/nvim $ans
+  $EDITOR $ans
 }}
 
 cmd unarchive ${{
