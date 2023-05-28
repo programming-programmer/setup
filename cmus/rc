@@ -24,5 +24,5 @@ bind -f common L view sorted
 bind -f common P view playlist
 bind -f common Q view queue
 bind -f common B view browser
-
+bind -f common A view tree
 
