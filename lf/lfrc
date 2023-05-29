@@ -1,5 +1,12 @@
 #Basic Settings
 set hidden true
+set scrolloff 10
+set cursorpreviewfmt "\033[7m"
+
+# Load file
+cmd load-config ${{
+    lf -remote "send $id source ~/.config/lf/lfrc"
+}}
 
 # Open file
 cmd open ${{
@@ -10,9 +17,46 @@ cmd open ${{
     # Text
     text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
 
+    # .org Files
+    # text/org) emacs $f;;
+
+    # PDF, EPUB, VND
+   	application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+
+    # Image
+   	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
+
     # Video
 	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
     esac
+}}
+
+# Select all files in directory
+cmd all-files &{{
+    get_files() {
+        if [ "$lf_hidden" = 'false' ]; then
+            find "$PWD" -mindepth 1 -maxdepth 1 -type f -not -name '.*' -print0
+        else
+            find "$PWD" -mindepth 1 -maxdepth 1 -type f -print0
+        fi |
+        xargs -0 printf ' %q'
+    }
+
+    lf -remote "send $id :unselect; toggle $(get_files)"
+}}
+
+# Select all directories in directory (tongue twister)
+cmd all-dirs &{{
+    get_dirs() {
+        if [ "$lf_hidden" = 'false' ]; then
+            find "$PWD" -mindepth 1 -maxdepth 1 -type d -not -name '.*' -print0
+        else
+            find "$PWD" -mindepth 1 -maxdepth 1 -type d -print0
+        fi |
+        xargs -0 printf ' %q'
+    }
+
+    lf -remote "send $id :unselect; toggle $(get_dirs)"
 }}
 
 # Custom Functions
@@ -28,6 +72,34 @@ cmd mkfile ${{
   $EDITOR $ans
 }}
 
+# Dynamically set number of columns
+cmd column-reload ${{
+    w=$(tput cols)
+    if [ $w -le 80 ]; then
+        lf -remote "send $id set ratios 1:2"
+    elif [ $w -le 160 ]; then
+        lf -remote "send $id set ratios 1:2:3"
+    else
+        lf -remote "send $id set ratios 1:2:3:5"
+    fi
+}}
+
+# Yank stuff
+# cmd yank-dirname $dirname -- "$f" | head -c-1 | xclip -i -selection clipboard
+cmd yank-path ${{
+    printf '%s' "$fx" | xclip -i -selection primary
+}}    
+# cmd yank-basename $basename -a -- $fx | head -c-1 | xclip -i -selection clipboard
+
+# New Folder with selected items
+cmd newfolder ${{
+    set -f
+    read newd
+    printf "Directory name: "
+    mkdir -- "$newd"
+    mv -- $fx "$newd"
+}}
+
 cmd unarchive ${{
   case "$f" in
       *.zip) unzip "$f" ;;
@@ -38,19 +110,57 @@ cmd unarchive ${{
   esac
 }}
 
+# compress current file or selected files with tar and gunzip
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+# Unbind some bindings
 map m
+map d
+map Z
+map T
+map C
+map N
+map y
+map R
+map A
+map b
+map B
 
 # Basic Functions
+map C load-config
 map . set hidden!
 map <enter> open
-map R reload 
+map R column-reload
 map mf mkfile
 map md mkdir
+map N newfolder
+map Z zip
+map T tar
 map D delete
 map E unarchive
 map x cut
-map y copy
+map yy copy
+map yp yank-path
 map p paste
+map af all-files
+map ad all-dirs
+map b bookmark_create
+map B bookmark_jump
 
 # Movement
 map gg top
@@ -58,4 +168,5 @@ map gh cd ~
 map gc cd ~/.config
 map gp cd ~/Projects
 map gn cd /mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes
+map gm cd /mnt/chromeos/GoogleDrive/MyDrive/music
 
