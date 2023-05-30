@@ -1,5 +1,8 @@
 #It is recommended to use the -f option, or else bind may fail
 
+# Starting view
+set start_view=playlist
+
 #Rebind volume control
 bind -f common 9 vol -10%
 bind -f common 0 vol +10%
