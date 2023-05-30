@@ -6,15 +6,15 @@ esac
 
 # Bash History
 HISTCONTROL=ignoreboth
-
 shopt -s histappend
-
 HISTSIZE=100
 HISTFILESIZE=200
 HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/bash/history"
 
 # Check the Window Size 
 shopt -s checkwinsize
+# Guess silly
+shopt -s autocd
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -26,7 +26,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Load aliases and shortcuts if existent.
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/bash/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/bash/aliasrc"
 
 # enable programmable completion features 
 if ! shopt -oq posix; then
@@ -38,12 +38,14 @@ if ! shopt -oq posix; then
 fi
 
 # the beautiful bash prompt
-eval "$(starship init bash)"
+PS1="\w $ " # Setting PS1 to show full path
+# ~/work/esp/esp-idf/examples/bluetooth/nimble$ 
+export PROMPT_DIRTRIM=4 # Trimming path to 4 directories
+# ~/.../esp-idf/examples/bluetooth/nimble$ 
 
 # lfcd script
 LFCD="/home/mthich15/.config/lf/lfcd.sh"
 if [ -f "$LFCD" ]; then
     source "$LFCD"
 fi
-
 bind '"\C-o":"lfcd\C-m"'
