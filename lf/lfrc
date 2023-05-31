@@ -169,4 +169,7 @@ map gc cd ~/.config
 map gp cd ~/Projects
 map gn cd /mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes
 map gm cd /mnt/chromeos/GoogleDrive/MyDrive/music
+map gd cd /mnt/chromeos/GoogleDrive/MyDrive
+map gD cd /mnt/chromeos/MyFiles/Downloads
+
 
