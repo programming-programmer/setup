@@ -1,11 +1,20 @@
 #It is recommended to use the -f option, or else bind may fail
 
+#That weird warning
+set mpris=false
+
 # Starting view
 set start_view=playlist
 
 #Rebind volume control
 bind -f common 9 vol -10%
 bind -f common 0 vol +10%
+
+# Select next window (Similar to lf functionality)
+bind -f common space win-next
+
+# Rebind marking
+bind -f common tab win-toggle
 
 #Shift+J for forward 1 min
 bind -f common J seek -1m

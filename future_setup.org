@@ -1,0 +1,41 @@
+* This is an "ideaboard" for future setups
+
+** No need for GRUB theme because I would only run one distro
+ * Arch/Artix: I don't care for other flavors since there isn't much of a difference 
+ * Debian: If I don't like/am excited about the AUR that much then I can switch over
+ * Gentoo: This is the end goal for true minimalism but this is for later
+
+** I don't care about systemd so either one I don't care :shrug:
+
+** Rofi would be important
+ * Powermenu: Implement some icons (ctrl+alt or meta P)
+ * Shortcut Menu: List all shortcuts and put (if applicable) shortcuts aside (ctrl+alt or meta S)
+   * I have a lot of ideas for this one:
+     - record screen with ffmpeg
+     - take copied yt link and download
+     - show clipboard
+     - show output of recent program
+     - screenshot with scrot
+     - start cmus (without tmux running)
+     - start lf (without tmux)
+     - scratchpad terminal
+     - add copied link to newsboat url
+     - org-protocol
+ * Application Menu: List all applications and put (if applicable) shortcuts
+   aside (ctrl+alt or meta A)
+
+** DWM or Sway (wayland)
+ * Five workspaces
+   * empty
+   * browsing
+     * nyxt or librewolf with vimium_c
+   * terminal
+     * you'll have a lot of things in there (rss, music, yadda yadda)
+   * Emacs with other stuff
+     - In daemon mode, obviously,
+   * Terminal with nvim (development)
+ * Cycle each one with alt+n or alt+p or alt+#
+ * Obviously a terminal scrathpad (alt+s)
+   
+** Wallpaper _will_ sync up with pywal
+ * But gruvbox is simply beutiful

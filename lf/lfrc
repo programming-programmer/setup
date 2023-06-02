@@ -159,8 +159,6 @@ map yp yank-path
 map p paste
 map af all-files
 map ad all-dirs
-map b bookmark_create
-map B bookmark_jump
 
 # Movement
 map gg top
