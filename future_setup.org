@@ -11,11 +11,11 @@
  * Powermenu: Implement some icons (ctrl+alt or meta P)
  * Shortcut Menu: List all shortcuts and put (if applicable) shortcuts aside (ctrl+alt or meta S)
    * I have a lot of ideas for this one:
-     - record screen with ffmpeg
+     - record screen with ffmpeg (Luke Smith's video is good)
      - take copied yt link and download
      - show clipboard
      - show output of recent program
-     - screenshot with scrot
+     - screenshot with scrot (or wayland's replacement snag)
      - start cmus (without tmux running)
      - start lf (without tmux)
      - scratchpad terminal
