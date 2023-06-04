@@ -7,9 +7,6 @@ lsp.ensure_installed({
   'clangd',
   'jdtls',
   'pyright',
-  'jdtls',
-  'java-test',
-  'java-debug-adapter',
 })
 
 -- Fix Undefined global 'vim'

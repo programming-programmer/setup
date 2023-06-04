@@ -7,19 +7,32 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- TREESITTER
+  use {
+      'nvim-treesitter/nvim-treesitter',
+      run = function()
+          local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+          ts_update()
+      end,
+  }
+
+  use('nvim-treesitter/playground')
+
+
+  -- FILE NAV
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use {
-	  'nvim-treesitter/nvim-treesitter',
-	  run = function()
-		  local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-		  ts_update()
-	  end,
-  }
+  use('ThePrimeagen/harpoon')
+
+
+  -- DEV
+  use("theprimeagen/refactoring.nvim")
+  use ('mbbill/undotree')
+  use('tpope/vim-fugitive')
 
   use({
       "folke/trouble.nvim",
@@ -33,6 +46,7 @@ return require('packer').startup(function(use)
       end
   })
 
+  -- LSP Setup
   use {
       'VonHeikemen/lsp-zero.nvim',
       branch = 'v1.x',
@@ -56,21 +70,16 @@ return require('packer').startup(function(use)
       }
   }
 
+  -- Debugging
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use('theHamsta/nvim-dap-virtual-text')
 
+  -- Java
   use('mfussenegger/nvim-jdtls')
 
-  use('nvim-treesitter/playground')
 
-  use('ThePrimeagen/harpoon')
-
-  use('ThePrimeagen/vim-be-good')
-
-  use("theprimeagen/refactoring.nvim")
-
-  use ('mbbill/undotree')
-
-  use('tpope/vim-fugitive')
+  -- AESTHETICS
+  use { "ellisonleao/gruvbox.nvim" }
 
   use {
       'goolord/alpha-nvim',
@@ -79,6 +88,8 @@ return require('packer').startup(function(use)
       end
   }
 
-    -- THEME
-    use { "ellisonleao/gruvbox.nvim" }
+
+  -- MISC
+  use('ThePrimeagen/vim-be-good')
+
 end)
