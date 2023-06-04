@@ -1,0 +1,32 @@
+add -p some_form_of_happy_nostalgia/
+pl-create some_form_of_happy_nostalgia
+add -p /mnt/chromeos/GoogleDrive/MyDrive/music/hiphop/
+load
+pl-create hiphop
+add -p silly/
+refresh 
+pl-create silly
+filter
+player-pause
+set
+add -p rap_turned_up/
+pl-create rap_turned_up
+pl-create 
+add -p kpop/
+pl-create kpop
+save
+add -p chill_rap/
+add Calling My Phone [DH8UOybPqjI].m4aj
+add 
+pl-create chill_rap
+pl-create
+delete-pl
+delete
+update-cache 
+clear
+clear 
+save 
+add ~/music/silly/
+pl-create  music_for_silly_goobers
+add ~/music/
+colorscheme gruvbox-warm
