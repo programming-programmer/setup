@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
   use("theprimeagen/refactoring.nvim")
   use ('mbbill/undotree')
   use('tpope/vim-fugitive')
+  use('lukas-reineke/indent-blankline.nvim')
 
   use({
       "folke/trouble.nvim",
