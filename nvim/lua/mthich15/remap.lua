@@ -1,7 +1,5 @@
-local builtin = require('telescope.builtin')
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "<C-g>", "<Esc>")
 
 -- Sweet mother of magaldene, this brings a tear to me eye
@@ -20,6 +18,7 @@ vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Beugtilf sdfkaldf replace WOOWWOWOW!!
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- I'm going to put tab related stuff here for simplicity ¯\_(ツ)_/¯ 
@@ -27,5 +26,10 @@ vim.keymap.set('n', '<leader>tt', vim.cmd.tabnew)
 vim.keymap.set('n', '<leader>td', vim.cmd.tabclose)
 
 -- Buffers via telescope
-vim.keymap.set('n', '<leader>bb', builtin.buffers,  {})
-vim.keymap.set('n', '<leader>bd', vim.cmd.bdelete, {})
+vim.keymap.set('n', '<leader>bb', vim.cmd.buffers)
+vim.keymap.set('n', '<leader>bd', vim.cmd.bdelete)
+
+-- Source file
+vim.keymap.set("n", "<leader><leader>", function()
+    vim.cmd("so")
+end)

@@ -180,6 +180,11 @@ _G.packer_plugins = {
     path = "/home/mthich15/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["oil.nvim"] = {
+    loaded = true,
+    path = "/home/mthich15/.local/share/nvim/site/pack/packer/start/oil.nvim",
+    url = "https://github.com/stevearc/oil.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/mthich15/.local/share/nvim/site/pack/packer/start/packer.nvim",
