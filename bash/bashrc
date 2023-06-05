@@ -15,6 +15,8 @@ HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/bash/history"
 shopt -s checkwinsize
 # Guess silly
 shopt -s autocd
+# expand aliases
+shopt -s expand_aliases 
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -47,3 +49,5 @@ if [ -f "$LFCD" ]; then
     source "$LFCD"
 fi
 bind '"\C-o":"lfcd\C-m"'
+
+bind '"\C-t":"tmux new -s h@ck -n main\C-m"'

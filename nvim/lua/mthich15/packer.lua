@@ -81,7 +81,7 @@ return require('packer').startup(function(use)
 
 
   -- AESTHETICS
-  use { "ellisonleao/gruvbox.nvim" }
+  use("ellisonleao/gruvbox.nvim")
 
   use {
       'goolord/alpha-nvim',

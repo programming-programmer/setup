@@ -1,6 +1,6 @@
 local oil = require("oil")
 
-vim.keymap.set("n", "<leader>pv", require("oil").open, { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>pv", oil.open, { desc = "Open parent directory" })
 
 oil.setup({
   -- Id is automatically added at the beginning, and name at the end
