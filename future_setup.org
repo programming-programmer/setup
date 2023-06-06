@@ -32,7 +32,7 @@
    * empty
    * browsing
      * nyxt or brave or librewolf
-     * vim bindings in is a must (vimium_c)
+     * vim bindings is a must (vimium_c)
    * terminal
      * you'll have a lot of things in there (rss, music, yadda yadda)
    * Emacs with other stuff
@@ -52,7 +52,7 @@
  * I've outgrown rounded corners
  * Snappy feel (so not *too* much bloat just enough lol)
  * coreboot pls?
- * Stickers on laptop (I'll be so proud when you get a monitor
+ * Stickers on laptop (I'll be so proud when you get a monitor)
 
 ** What will become of this laptop
  * Will become debian server for media (movies, shows, and music)
