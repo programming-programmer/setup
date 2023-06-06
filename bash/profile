@@ -2,7 +2,6 @@
 # profile file. Runs on login. Environmental variables are set here.
 
 # Adds `~/.local/bin` to $PATH
-# set PATH so it includes user's private ~/.local/bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi

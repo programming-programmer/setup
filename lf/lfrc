@@ -84,13 +84,6 @@ cmd column-reload ${{
     fi
 }}
 
-# Yank stuff
-# cmd yank-dirname $dirname -- "$f" | head -c-1 | xclip -i -selection clipboard
-cmd yank-path ${{
-    printf '%s' "$fx" | xclip -i -selection primary
-}}    
-# cmd yank-basename $basename -a -- $fx | head -c-1 | xclip -i -selection clipboard
-
 # New Folder with selected items
 cmd newfolder ${{
     set -f

@@ -1,3 +1,12 @@
+# Bindings
+bind '"\C-o":"lfcd\C-m"'
+bind '"\C-t":"tmux new -s h@ck -n main\C-m"'
+
+shopt -s histappend
+shopt -s checkwinsize
+shopt -s autocd
+shopt -s expand_aliases 
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -6,26 +15,9 @@ esac
 
 # Bash History
 HISTCONTROL=ignoreboth
-shopt -s histappend
 HISTSIZE=100
 HISTFILESIZE=200
 HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/bash/history"
-
-# Check the Window Size 
-shopt -s checkwinsize
-# Guess silly
-shopt -s autocd
-# expand aliases
-shopt -s expand_aliases 
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
 
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/bash/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/bash/aliasrc"
@@ -48,6 +40,3 @@ LFCD="/home/mthich15/.local/bin/lfcd"
 if [ -f "$LFCD" ]; then
     source "$LFCD"
 fi
-bind '"\C-o":"lfcd\C-m"'
-
-bind '"\C-t":"tmux new -s h@ck -n main\C-m"'

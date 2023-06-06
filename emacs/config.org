@@ -1,0 +1,611 @@
+#+TITLE: Mer Thich's Emacs Configuration
+#+AUTHOR: Mer Thich (programming-programmer)
+
+ * First of all look how sexy this setup is. (Haters wish to be this
+✨aesthetic✨) Due to recent events, this is no longer accurate but it sure look banging
+
+[[file:emacs_setup.png]]
+
+* Package Management
+** Package Sources 
+ * Where to gather package sources (MELPA and MELPA stable, ORG, and ELPA)
+#+begin_src emacs-lisp
+    (require 'package)
+    (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                             ("melpa-stable" . "https://stable.melpa.org/packages/")
+                             ("elpa" . "https://elpa.gnu.org/packages/")))
+#+end_src
+
+** Use-package
+ * Use use-package for easier and more concise package management. yay!
+#+begin_src emacs-lisp
+    (require 'use-package)
+    (setq use-package-always-ensure t)
+#+end_src
+
+** Make sure use-package is installed
+ * Make sure use-package is installed on new setups
+#+begin_src emacs-lisp
+    (unless (package-installed-p 'use-package)
+      (package-refresh-contents)
+      (package-install 'use-package))
+
+  #+end_src
+
+* Startup and Perfomance
+** Garbage Collection
+ * Make startup faster by reducing the frequency of garbage collection and then use a hook to measure Emacs startup time. The default is 800 kilobytes. Measured in bytes. Garbage collection off during initialization (focus all memory on initialize)
+#+begin_src emacs-lisp
+    (setq gc-cons-threshold (* 50 1000 1000) 
+          gc-cons-percentage 0.6)
+#+end_src
+
+ * Reset garbage collection after initialization (return deprecated memory to stack when idle)
+#+begin_src emacs-lisp
+    (add-hook 'emacs-startup-hook
+              (lambda ()
+                (setq gc-cons-threshold 16777216 ; 16mb
+                      gc-cons-percentage 0.1)))
+
+    (setq gcmh-idle-delay 'auto  ; default is 15s
+          gcmh-auto-idle-delay-factor 10
+          gcmh-high-cons-threshold (* 16 1024 1024))  ; 16mb
+#+end_src
+
+** Defaults in Emacs
+#+begin_src emacs-lisp
+  (setq-default
+   ad-redefinition-action 'accept                   ; Silence warnings for redefinition
+   sentence-end-double-space nil                    ; Double space after a period!? Inhumane!
+   cursor-in-non-selected-windows t                 ; Hide the cursor in inactive windows
+   fill-column 80                                   ; Set width for automatic line breaks
+   help-window-select t                             ; Focus new help windows when opened
+   indent-tabs-mode t                               ; Prefer tabs over inferior spaces
+   inhibit-startup-screen t                         ; Disable start-up screen
+   load-prefer-newer t                              ; Prefer the newest version of a file
+   mark-ring-max 128                                ; Maximum length of mark ring
+   select-enable-clipboard t                        ; Merge system's and Emacs' clipboard
+   tab-width 4                                      ; Set width for tabs
+   vc-follow-symlinks t                             ; Always follow the symlinks
+   view-read-only t                                 ; Always open read only files in view mode
+   make-backup-files nil
+   auto-save-default nil
+   create-lockfiles nil)
+#+end_src
+
+** Scratch Message / Dashboard
+ * I think I've grown past the need for eye-candy on startup. It also slows me
+   down 😎
+#+begin_src emacs-lisp
+  (setq initial-scratch-message
+   " 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                              ███████╗███╗   ███╗ █████╗  ██████╗███████╗
+                                                              ██╔════╝████╗ ████║██╔══██╗██╔════╝██╔════╝
+                                                              █████╗  ██╔████╔██║███████║██║     ███████╗
+                                                              ██╔══╝  ██║╚██╔╝██║██╔══██║██║     ╚════██║
+                                                              ███████╗██║ ╚═╝ ██║██║  ██║╚██████╗███████║
+                                                              ╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚══════╝
+ 
+   "                                           
+    )
+#+end_src
+
+** Replace yes/no prompts
+ * Replace yes/no prompts with y/n becuase we so smurt
+#+begin_src emacs-lisp
+    (fset 'yes-or-no-p 'y-or-n-p)                     ; Replace yes/no prompts with y/n
+#+end_src 
+
+** UTF-8 encoding
+ * Default to utf-8 encoding
+#+begin_src emacs-lisp
+   (set-default-coding-systems 'utf-8)
+#+end_src 
+
+** Show parent paranthesis
+#+begin_src emacs-lisp
+    (show-paren-mode 1)
+#+end_src 
+
+** Visual Line mode
+ * Turn off that silly visual line mode
+#+begin_src emacs-lisp
+    (global-visual-line-mode nil)
+#+end_src 
+
+** History
+ * Save history
+#+begin_src emacs-lisp
+    (savehist-mode t)
+#+end_src 
+
+** Menu bar
+ * Remove that menubar pls :)
+#+begin_src emacs-lisp 
+    (menu-bar-mode -1)
+#+end_src 
+
+** Tool bar
+ * Remove toolbar too
+#+begin_src emacs-lisp
+    (tool-bar-mode -1)
+#+end_src 
+
+** Scroll bar
+ * Disable visible scrollbar
+#+begin_src emacs-lisp
+    (scroll-bar-mode -1)
+#+end_src 
+
+** Tooltips
+ * Disable tooltips
+#+begin_src emacs-lisp
+    (tooltip-mode -1)
+#+end_src 
+
+** Fringes
+ * Give some breathing room
+#+begin_src emacs-lisp
+    (set-fringe-mode 10)   
+#+end_src
+
+** Scrolling improvements
+#+begin_src emacs-lisp
+    (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ; one line at a time
+    (setq mouse-wheel-progressive-speed nil)            ; don't accelerate scrolling
+    (setq mouse-wheel-follow-mouse 't)                  ; scroll window under mouse
+    (setq scroll-step 1)                                ; keyboard scroll one line at a time
+#+end_src
+
+** Line Numbers
+ * No line numbers for org-mode, programming-mode, text-mode, and conf-mode??
+#+begin_src emacs-lisp
+  (dolist (mode '(org-mode-hook
+                  prog-mode-hook
+                  text-mode
+                  conf-mode))
+    (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src
+ 
+** Fullscreen on startup baby!
+#+begin_src emacs-lisp
+  (add-hook 'emacs-startup-hook 'toggle-frame-maximized)
+#+end_src
+
+* Custom Shortcuts
+ * *NOTE:* This does not include the *surface area* of custom shortcuts. There are
+   multiple thorughout this config and it would be impossible (programmingly??)
+   to bring them to one section. So keep that in mind. 
+** Duplicate line: C-c d
+#+begin_src emacs-lisp
+    (defun duplicate-line()
+      (interactive)
+      (move-beginning-of-line 1)
+      (kill-line)
+      (yank)
+      (open-line 1)
+      (next-line 1)
+      (yank))
+
+  (global-set-key (kbd "C-c d") 'duplicate-line)
+#+end_src
+
+** Rebind M-x
+#+begin_src emacs-lisp
+ (global-set-key "\C-x\C-m" 'execute-extended-command)
+#+end_src
+
+* Addons
+** Guru Mode
+ * Enable Guru Mode globally (disables arrow keys)
+#+begin_src emacs-lisp
+  (use-package guru-mode
+  :config
+  (guru-global-mode +1))
+#+end_src
+
+** Mouse Mode
+ * Disable mouse commands globally
+#+begin_src emacs-lisp
+  (use-package disable-mouse
+    :config
+    (disable-mouse-global-mode))
+#+end_src
+
+** Which-key
+ * Shows which keys are avaliable. HAH! look at that pun. amazing
+#+begin_src emacs-lisp
+  (use-package which-key
+    :init (which-key-mode)
+    :diminish which-key-mode
+    :config
+    (setq which-key-idle-delay 0.3))
+#+end_src
+
+** Nyan Mode 
+ * Nyan mode baby! 
+#+begin_src emacs-lisp
+  (use-package nyan-mode 
+    :init (nyan-mode) 
+    :config (setq nyan-wavy-trail t))
+#+end_src
+
+** Emojis 
+ * Shamelessly stolen from this [[https://ianyepan.github.io/posts/emacs-emojis/][blog]]. Install Noto Color Emoji beforehand though
+   😔
+#+begin_src emacs-lisp
+  (use-package emojify
+    :config
+    (when (member "Noto Color Emoji" (font-family-list))
+      (set-fontset-font
+       t 'symbol (font-spec :family "Noto Color Emoji") nil 'prepend))
+    (setq emojify-display-style 'unicode)
+    (setq emojify-emoji-styles '(unicode))
+    (bind-key* (kbd "C-c e") #'emojify-insert-emoji)) ; override binding in any mode
+#+end_src
+
+* Aesthetics
+** Font: Source Code Pro
+ * NOTE: On a new system, you will have to install Source Code Pro on the system
+#+begin_src emacs-lisp
+  (set-face-attribute 'default t :height 100 :weight 'medium)
+  (set-face-attribute 'default t :font "Source Code Pro")
+#+end_src
+
+ * Font for org-mode
+#+begin_src emacs-lisp
+  (custom-theme-set-faces
+   'user
+   '(variable-pitch ((t (:family "Source Code Pro" :height 100 :weight medium))))
+   '(fixed-pitch ((t ( :family "Source Code Pro" :height 100)))))
+#+end_src 
+
+** Theme: Gruvbox
+ * Apparently DOOM themes have better continuity in Emacs, which appears to be true. The nonfunctioning orgmode elipsis is a testament to this.  [[https://github.com/doomemacs/themes][Doom themes]]
+#+begin_src emacs-lisp
+  (use-package doom-themes
+    :config
+    (load-theme 'doom-gruvbox t))
+#+end_src
+
+** Icons
+#+begin_src emacs-lisp
+  (use-package all-the-icons)
+#+end_src
+
+** Modeline
+ * BEutiful modeline. mwah! lovely! jsut lovely!
+#+begin_src emacs-lisp
+  (use-package doom-modeline
+    :hook (after-init . doom-modeline-mode)
+    (setq doom-modeline-icon t))
+#+end_src
+
+* Ivy
+ * Ivy is an excellent completion framework for Emacs. It provides a minimal yet powerful selection menu that appears when you open files, switch buffers, and for many other tasks in Emacs. 
+#+begin_src emacs-lisp
+    (use-package ivy
+      :bind (("C-s" . swiper)
+           :map ivy-minibuffer-map
+           ("TAB" . ivy-alt-done)
+           ("C-j" . ivy-next-line)
+           ("C-k" . ivy-previous-line)
+      :config
+      (setq ivy-use-virtual-buffers t)
+      (setq ivy-wrap t)
+      (setq ivy-count-format "(%d/%d) ")
+      (setq enable-recursive-minibuffers t)
+
+      (ivy-mode 1))  
+#+end_src
+
+** Counsel
+ * Counsel is a customized set of commands to replace `find-file` with
+   `counsel-find-file`, etc which provide useful commands for each of the default completion commands.
+#+begin_src emacs-lisp
+  (use-package counsel
+    :bind (("C-x b" . 'counsel-switch-buffer)
+           :map minibuffer-local-map
+           ("C-r" . 'counsel-minibuffer-history))
+    :config
+    (counsel-mode 1))
+#+end_src
+
+* Org-Mode
+** Org mode setup 
+ * Turn on indentation and auto-fill mode for Org files
+#+begin_src emacs-lisp
+  (defun dw/org-mode-setup ()
+    (org-indent-mode)
+    (variable-pitch-mode 1)
+    (auto-fill-mode)) 
+#+end_src
+
+ * This is another setup :)
+#+begin_src emacs-lisp
+    (use-package org
+       :defer t
+       :hook (org-mode . dw/org-mode-setup)
+#+end_src
+
+** Org Config
+#+begin_src emacs-lisp
+  :config
+  (setq
+#+end_src
+
+*** Org Ellipsis
+#+begin_src emacs-lisp
+  org-ellipsis " ▾"
+#+end_src
+
+*** Source Fontify
+#+begin_src emacs-lisp
+  org-src-fontify-natively t
+#+end_src
+
+*** Quote and Verse Blocks
+#+begin_src emacs-lisp
+  org-fontify-quote-and-verse-blocks t
+#+end_src
+
+*** Org Tab Behaviors
+#+begin_src emacs-lisp
+  org-src-tab-acts-natively t
+#+end_src
+
+*** Source Code indentation
+#+begin_src emacs-lisp
+  org-edit-src-content-indentation 2
+#+end_src
+
+*** Block Startup
+#+begin_src emacs-lisp
+  org-hide-block-startup nil
+#+end_src
+
+*** Org Indentation
+#+begin_src emacs-lisp
+  org-src-preserve-indentation nil
+#+end_src
+
+*** Folded Org Headers
+#+begin_src emacs-lisp
+  org-startup-folded 'content
+#+end_src
+
+*** Seperator Lines
+#+begin_src emacs-lisp
+  org-cycle-separator-lines 2
+#+end_src
+
+*** Inline Images
+#+begin_src emacs-lisp
+  org-startup-with-inline-images nil
+#+end_src
+
+*** Emphasis Markers
+#+begin_src emacs-lisp
+  org-hide-emphasis-markers t
+#+end_src
+
+*** Org Agenda Column View
+#+begin_src emacs-lisp
+  org-agenda-overriding-columns-format
+  "%TODO %ITEM %TAGS"
+#+end_src
+
+*** End of Org Defualt Block
+#+begin_src emacs-lisp
+)
+#+end_src
+
+** Org Capture Templates
+#+begin_src emacs-lisp
+    (setq org-capture-templates '(
+#+end_src
+
+*** TODO Template
+#+begin_src emacs-lisp
+   ("t" "Todo" entry (file+headline "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org" "Tasks")
+    "* TODO %?\n ")
+#+end_src
+
+*** Meeting Template
+#+begin_src emacs-lisp
+   ("m" "Scheduled Meeting" entry (file+headline "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org" "Meetings")
+  "* %?\n ")
+#+end_src
+
+*** End of Org Capture Template
+#+begin_src emacs-lisp
+   ))
+#+end_src
+
+** Command to start Org-agenda: C-c a
+#+begin_src emacs-lisp
+  (global-set-key "\C-ca" 'org-agenda)
+#+end_src
+
+** Command to start Org-capture: C-c c
+#+begin_src emacs-lisp
+  (global-set-key "\C-cc" 'org-capture)
+#+end_src
+
+** Org-indent Face
+ * Make sure org-indent face is avaliable
+#+begin_src emacs-lisp
+    (require 'org-indent)
+#+end_src
+
+** Pretty Header Bullet Points
+ * Nice header bullet points
+#+begin_src emacs-lisp
+    (use-package org-superstar
+      :after org
+      :hook (org-mode . org-superstar-mode)
+      :custom
+      (org-superstar-remove-leading-stars t)
+      (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●")))
+#+end_src
+
+** Header Sizes
+#+begin_src emacs-lisp
+    (custom-set-faces
+     '(org-level-1 ((t (:inherit outline-1 :height 1.5))))
+     '(org-level-2 ((t (:inherit outline-2 :height 1.3))))
+     '(org-level-3 ((t (:inherit outline-3 :height 1.2))))
+     '(org-level-4 ((t (:inherit outline-4 :height 1.1))))
+     '(org-level-5 ((t (:inherit outline-5 :height 1.1))))
+     )
+#+end_src
+
+** Code block templates
+ * Type "<el" then hit Tab to expand template. More can be found here: [[https://orgmode.org/manual/Easy-templates.html]]. This is needed as of Org 9.2
+#+begin_src emacs-lisp
+    (require 'org-tempo)
+    (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
+    (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+#+end_src
+
+** Pretty Symbols
+#+begin_src emacs-lisp
+  ;; Prettifying src blocks
+  (setq-default prettify-symbols-alist '(("#+BEGIN_SRC" . "†")
+                                         ("#+END_SRC" . "†")
+                                         ("#+begin_src" . "†")
+                                         ("#+end_src" . "†")
+                                         (">=" . "≥")
+                                         ("=>" . "⇨")))
+
+  (setq prettify-symbols-unprettify-at-point 'right-edge)
+  (add-hook 'org-mode-hook 'prettify-symbols-mode)
+#+end_src
+
+** End of Org Block
+#+begin_src emacs-lisp   
+ )
+#+end_src
+
+* Org-Roam
+#+begin_src emacs-lisp
+  (use-package org-roam
+#+end_src
+
+** Org Roam Directory
+#+begin_src emacs-lisp  
+    :custom
+    (org-roam-directory "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes")
+#+end_src
+
+** Org Roam Completion
+#+begin_src emacs-lisp
+    (org-roam-completion-everywhere t)
+    #+end_src
+
+** Org Roam Capture Template
+#+begin_src emacs-lisp
+   (org-roam-capture-templates '(
+#+end_src
+
+*** Default Template
+#+begin_src emacs-lisp
+  ("d" "default" plain
+   "%?"
+   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+   :unnarrowed t)
+#+end_src
+
+*** Book Template
+#+begin_src emacs-lisp
+  ("b" "book notes" plain (file "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/RoamTemplates/book.org")
+   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+   :unnarrowed t)
+#+end_src
+
+*** Class Template
+#+begin_src emacs-lisp
+  ("c" "class" plain (file "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/RoamTemplates/class.org")
+   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+   :unnarrowed t)
+#+end_src
+
+*** school.org Template
+#+begin_src emacs-lisp
+  ("s" "school.org" plain (file "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/RoamTemplates/school.org")
+   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+   :unnarrowed t)
+#+end_src
+
+*** End of Org Roam Capture Templates
+#+begin_src emacs-lisp
+  ))
+#+end_src
+
+** Org Roam Bindings
+#+begin_src emacs-lisp
+      :bind (("C-c n l" . org-roam-buffer-toggle)
+             ("C-c n f" . org-roam-node-find)
+             ("C-c n i" . org-roam-node-insert)
+             :map org-mode-map
+             ("C-M-i" . completion-at-point))
+      :config
+      (org-roam-setup)
+  #+end_src
+
+** End of Org Roam Block
+  #+begin_src emacs-lisp
+  )
+#+end_src
+
+* Code Development
+** Rainbow delimeters
+ * See the nested parentheses (God send) but only in programming-mode
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+    :hook (prog-mode . rainbow-delimiters-mode))
+ #+end_src
+
+** Magit
+ * Magit integration (git integration for emacs)
+#+begin_src emacs-lisp
+  (use-package magit
+    :commands (magit-status magit-get-current-branch)
+    :custom
+    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+#+end_src
+
+* You have now reached the end of the configuration.
+ * Do you cringe or are you enlightened? Have a great day :)
+#+begin_src 
+ _________________________________________
+/ Invent and fit; have fits and reinvent! \
+| We toast the Lisp programmer who pens   |
+| his thoughts within nests of            |
+\\ parentheses.                           /
+  ---------------------------------------
+         \   ^__^ 
+          \  (oo)\_______
+             (__)\       )\/\\
+                 ||----w |
+                 ||     ||
+#+end_src

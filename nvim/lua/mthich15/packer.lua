@@ -7,7 +7,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- TREESITTER
+  -- TREESITTER --
   use {
       'nvim-treesitter/nvim-treesitter',
       run = function()
@@ -19,7 +19,7 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/playground')
 
 
-  -- FILE NAV
+  -- FILE NAV --
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
 	  -- or                            , branch = '0.1.x',
@@ -27,28 +27,25 @@ return require('packer').startup(function(use)
   }
 
   use('ThePrimeagen/harpoon')
-  use ('stevearc/oil.nvim')
+  use('stevearc/oil.nvim')
 
 
-  -- DEV
-  use("theprimeagen/refactoring.nvim")
-  use ('mbbill/undotree')
+  -- DEV --
+  use('theprimeagen/refactoring.nvim')
+  use('mbbill/undotree')
   use('tpope/vim-fugitive')
   use('lukas-reineke/indent-blankline.nvim')
 
-  use({
-      "folke/trouble.nvim",
+  use {
+      'folke/trouble.nvim',
       config = function()
-          require("trouble").setup {
+          require('trouble').setup {
               icons = false,
-              -- your configuration comes here
-              -- or leave it empty to use the default settings
-              -- refer to the configuration section below
           }
       end
-  })
+  }
 
-  -- LSP Setup
+  -- LSP Setup --
   use {
       'VonHeikemen/lsp-zero.nvim',
       branch = 'v1.x',
@@ -73,14 +70,20 @@ return require('packer').startup(function(use)
   }
 
   -- Debugging
-  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+  use {
+      'rcarriga/nvim-dap-ui',
+      requires = {
+          {'mfussenegger/nvim-dap'}
+      }
+  }
+
   use('theHamsta/nvim-dap-virtual-text')
 
   -- Java
   use('mfussenegger/nvim-jdtls')
 
 
-  -- AESTHETICS
+  -- AESTHETICS --
   use("ellisonleao/gruvbox.nvim")
 
   use {
@@ -91,7 +94,7 @@ return require('packer').startup(function(use)
   }
 
 
-  -- MISC
+  -- MISC --
   use('ThePrimeagen/vim-be-good')
 
 end)
