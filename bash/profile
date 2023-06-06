@@ -8,7 +8,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Default programs:
-export EDITOR="nvim"
+export EDITOR="/usr/bin/nvim"
 
 # Clean-up, clean up, everybody everywhere!
 export XDG_CONFIG_HOME="$HOME/.config"

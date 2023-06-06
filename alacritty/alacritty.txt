@@ -1,0 +1,57 @@
+alacritty 0.12.1
+Christian Duerr <contact@christianduerr.com>, Joe Wilm <joe@jwilm.com>
+A fast, cross-platform, OpenGL terminal emulator
+
+USAGE:
+    alacritty [OPTIONS] [SUBCOMMAND]
+
+OPTIONS:
+        --class <general> | <general>,<instance>
+            Defines window class/app_id on X11/Wayland [default: Alacritty]
+
+        --config-file <CONFIG_FILE>
+            Specify alternative configuration file [default:
+            $XDG_CONFIG_HOME/alacritty/alacritty.yml]
+
+    -e, --command <COMMAND>...
+            Command and args to execute (must be last argument)
+
+        --embed <EMBED>
+            X11 window ID to embed Alacritty within (decimal or hexadecimal with "0x" prefix)
+
+    -h, --help
+            Print help information
+
+        --hold
+            Remain open after child process exit
+
+    -o, --option <OPTION>...
+            Override configuration file options [example: cursor.style=Beam]
+
+        --print-events
+            Print all events to stdout
+
+    -q
+            Reduces the level of verbosity (the min level is -qq)
+
+        --ref-test
+            Generates ref test
+
+        --socket <SOCKET>
+            Path for IPC socket creation
+
+    -T, --title <TITLE>
+            Defines the window title [default: Alacritty]
+
+    -v
+            Increases the level of verbosity (the max level is -vvv)
+
+    -V, --version
+            Print version information
+
+        --working-directory <WORKING_DIRECTORY>
+            Start the shell in the specified working directory
+
+SUBCOMMANDS:
+    help    Print this message or the help of the given subcommand(s)
+    msg     Send a message to the Alacritty socket
