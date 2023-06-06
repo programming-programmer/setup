@@ -21,6 +21,9 @@
      - scratchpad terminal
      - add copied link to newsboat url
      - org-protocol 
+     - wifi menu
+     - calculator
+     - emoji picker
  * Application Menu: List all applications and put (if applicable) shortcuts
    aside (ctrl+alt or meta A)
 
@@ -46,7 +49,7 @@
 ** Stylistic reqs
  * Mild transperacny but add binding to toggle
  * Colored border on focused window
- * I've outgrown rounded corner
+ * I've outgrown rounded corners
  * Snappy feel (so not *too* much bloat just enough lol)
  * coreboot pls?
  * Stickers on laptop (I'll be so proud when you get a monitor
