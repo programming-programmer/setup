@@ -2,7 +2,7 @@
 #+AUTHOR: Mer Thich (programming-programmer)
 
  * First of all look how sexy this setup is. (Haters wish to be this
-✨aesthetic✨) Due to recent events, this is no longer accurate but it sure look banging
+   ✨aesthetic✨) However due to recent events, this is no longer accurate but it sure look banging
 
 [[file:emacs_setup.png]]
 
@@ -109,6 +109,12 @@
     )
 #+end_src
 
+** No modeline
+ * Minimal pls :)
+#+begin_src emacs-lisp
+  (setq-default mode-line-format nil)
+#+end_src
+
 ** Replace yes/no prompts
  * Replace yes/no prompts with y/n becuase we so smurt
 #+begin_src emacs-lisp
@@ -176,7 +182,7 @@
     (setq scroll-step 1)                                ; keyboard scroll one line at a time
 #+end_src
 
-** Line Numbers
+** No Line Numbers
  * No line numbers for org-mode, programming-mode, text-mode, and conf-mode??
 #+begin_src emacs-lisp
   (dolist (mode '(org-mode-hook
@@ -218,9 +224,7 @@
 ** Guru Mode
  * Enable Guru Mode globally (disables arrow keys)
 #+begin_src emacs-lisp
-  (use-package guru-mode
-  :config
-  (guru-global-mode +1))
+  (guru-global-mode +1)
 #+end_src
 
 ** Mouse Mode
@@ -269,6 +273,8 @@
 #+begin_src emacs-lisp
   (set-face-attribute 'default t :height 100 :weight 'medium)
   (set-face-attribute 'default t :font "Source Code Pro")
+
+
 #+end_src
 
  * Font for org-mode
@@ -277,6 +283,7 @@
    'user
    '(variable-pitch ((t (:family "Source Code Pro" :height 100 :weight medium))))
    '(fixed-pitch ((t ( :family "Source Code Pro" :height 100)))))
+
 #+end_src 
 
 ** Theme: Gruvbox
@@ -285,19 +292,6 @@
   (use-package doom-themes
     :config
     (load-theme 'doom-gruvbox t))
-#+end_src
-
-** Icons
-#+begin_src emacs-lisp
-  (use-package all-the-icons)
-#+end_src
-
-** Modeline
- * BEutiful modeline. mwah! lovely! jsut lovely!
-#+begin_src emacs-lisp
-  (use-package doom-modeline
-    :hook (after-init . doom-modeline-mode)
-    (setq doom-modeline-icon t))
 #+end_src
 
 * Ivy
@@ -309,6 +303,13 @@
            ("TAB" . ivy-alt-done)
            ("C-j" . ivy-next-line)
            ("C-k" . ivy-previous-line)
+           :map ivy-switch-buffer-map
+           ("C-k" . ivy-previous-line)
+           ("C-l" . ivy-done)
+           ("C-d" . ivy-switch-buffer-kill)
+           :map ivy-reverse-i-search-map
+           ("C-k" . ivy-previous-line)
+           ("C-d" . ivy-reverse-i-search-kill))
       :config
       (setq ivy-use-virtual-buffers t)
       (setq ivy-wrap t)
@@ -316,7 +317,16 @@
       (setq enable-recursive-minibuffers t)
 
       (ivy-mode 1))  
+
 #+end_src
+
+** Ivy Rich
+ * ivy-rich adds extra columns to a few of the Counsel commands to provide more information about each item.
+ #+begin_src emacs-lisp
+   (use-package ivy-rich
+    :init
+    (ivy-rich-mode 1))
+ #+end_src
 
 ** Counsel
  * Counsel is a customized set of commands to replace `find-file` with
@@ -358,6 +368,17 @@
   org-ellipsis " ▾"
 #+end_src
 
+*** TODO Keywords
+#+begin_src emacs-lisp
+org-todo-keywords
+      '((sequence "TODO" "PROG" "DONE"))
+#+end_src
+
+**** TODO Faces
+#+begin_src emacs-lisp
+org-todo-keyword-faces
+      '(("PROG" . (:foreground "red" :weight bold)))
+#+end_src
 *** Source Fontify
 #+begin_src emacs-lisp
   org-src-fontify-natively t
@@ -400,7 +421,7 @@
 
 *** Inline Images
 #+begin_src emacs-lisp
-  org-startup-with-inline-images nil
+  org-startup-with-inline-images t
 #+end_src
 
 *** Emphasis Markers
@@ -483,6 +504,7 @@
  * Type "<el" then hit Tab to expand template. More can be found here: [[https://orgmode.org/manual/Easy-templates.html]]. This is needed as of Org 9.2
 #+begin_src emacs-lisp
     (require 'org-tempo)
+
     (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
     (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
 #+end_src
@@ -577,7 +599,7 @@
   )
 #+end_src
 
-* Code Development
+* Development
 ** Rainbow delimeters
  * See the nested parentheses (God send) but only in programming-mode
 #+begin_src emacs-lisp
