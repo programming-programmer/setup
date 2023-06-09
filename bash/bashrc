@@ -2,6 +2,10 @@
 bind '"\C-o":"lfcd\C-m"'
 bind '"\C-t":"tmux new -s h@ck -n main\C-m"'
 
+# Very much possible tab completion
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
 shopt -s histappend
 shopt -s checkwinsize
 shopt -s autocd

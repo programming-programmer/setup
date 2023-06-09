@@ -63,7 +63,7 @@ cmd all-dirs &{{
 cmd mkdir ${{
   printf "Directory Name: "
   read ans
-  mkdir $ans
+  sudo mkdir $ans
 }}
 
 cmd mkfile ${{

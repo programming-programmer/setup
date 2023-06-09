@@ -294,6 +294,15 @@
     (load-theme 'doom-gruvbox t))
 #+end_src
 
+** Auto Save
+#+begin_src emacs-lisp
+(use-package super-save
+  :defer 1
+  :diminish super-save-mode
+  :config
+  (super-save-mode +1)
+  (setq super-save-auto-save-when-idle t))
+#+end_src
 * Ivy
  * Ivy is an excellent completion framework for Emacs. It provides a minimal yet powerful selection menu that appears when you open files, switch buffers, and for many other tasks in Emacs. 
 #+begin_src emacs-lisp
@@ -374,11 +383,12 @@ org-todo-keywords
       '((sequence "TODO" "PROG" "DONE"))
 #+end_src
 
-**** TODO Faces
+*** TODO Faces
 #+begin_src emacs-lisp
 org-todo-keyword-faces
       '(("PROG" . (:foreground "red" :weight bold)))
 #+end_src
+
 *** Source Fontify
 #+begin_src emacs-lisp
   org-src-fontify-natively t
@@ -526,6 +536,27 @@ org-todo-keyword-faces
 ** End of Org Block
 #+begin_src emacs-lisp   
  )
+#+end_src
+
+* Calendar
+ * Back to calender, back to emacs :)
+#+begin_src emacs-lisp
+(use-package calfw
+  :disabled
+  :commands cfw:open-org-calendar
+  :config
+  (setq cfw:fchar-junction ?╋
+        cfw:fchar-vertical-line ?┃
+        cfw:fchar-horizontal-line ?━
+        cfw:fchar-left-junction ?┣
+        cfw:fchar-right-junction ?┫
+        cfw:fchar-top-junction ?┯
+        cfw:fchar-top-left-corner ?┏
+        cfw:fchar-top-right-corner ?┓)
+
+  (use-package calfw-org
+    :config
+    (setq cfw:org-agenda-schedule-args '(:timestamp))))
 #+end_src
 
 * Org-Roam

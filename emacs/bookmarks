@@ -1,0 +1,20 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored"
+ (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org")
+ (front-context-string . "** TODO Add prog")
+ (rear-context-string . "to Brave search\n")
+ (position . 1469))
+("Refile"
+ (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org")
+ (front-context-string . ":PROPERTIES:\n:ID")
+ (rear-context-string)
+ (position . 1))
+("config.org"
+ (filename . "~/.config/emacs/config.org")
+ (front-context-string . "** Make sure use")
+ (rear-context-string . "e t)\n#+end_src\n\n")
+ (position . 873))
+)

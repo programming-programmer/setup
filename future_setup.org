@@ -24,20 +24,26 @@
      - wifi menu
      - calculator
      - emoji picker
+     - Pull up refile.org on emacs (would be for TODO)
  * Application Menu: List all applications and put (if applicable) shortcuts
    aside (ctrl+alt or meta A)
 
 ** DWM or Sway (wayland)
  * Five workspaces
    * empty
-   * browsing
+   * Terminal with nvim (development)
+   * official browsing (work or school)
      * nyxt or brave or librewolf
      * vim bindings is a must (vimium_c)
+     * has to be a stable browser since school and/or work stuff will be on it
+     * might have to be chromium or close relative of firefox
+   * fun browsing
+     * fun applications too
+     * gaming or stuff
    * terminal
-     * you'll have a lot of things in there (rss, music, yadda yadda)
+    * you'll have a lot of things in there (rss, music, yadda yadda)    
    * Emacs with other stuff
      - In daemon mode, obviously,
-   * Terminal with nvim (development)
  * Cycle each one with alt+n or alt+p or alt+#
  * Obviously a terminal scrathpad (alt+s)
    

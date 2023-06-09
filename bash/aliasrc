@@ -1,7 +1,7 @@
 alias vim='/usr/bin/nvim'
 
 alias ll='ls -l --color'
-alias la='ls -Al --color'
+alias la='ls -A --color'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -10,6 +10,7 @@ alias tr='tree'
 
 alias emacs='emacsclient --create-frame --alternate-editor=""'
 alias ytp='yt-dlp --yes-playlist --skip-unavailable-fragments -x --audio-format aac --audio-quality 0 --add-metadata'
+alias newsboat='newsboat -q'
 
 alias gs='git status'
 alias gc='git commit -m'
