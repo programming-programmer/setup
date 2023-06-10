@@ -8,9 +8,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
-   '("/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org"))
+   '("/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/SUM_2023/ENGL_C101/20230609180007-engl.org" "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org"))
  '(package-selected-packages
-   '(magit rainbow-delimiters org-roam org-superstar counsel ivy-rich ivy which-key use-package nyan-mode guru-mode emojify doom-themes doom-modeline disable-mouse all-the-icons)))
+   '(calfw-org calfw super-save magit rainbow-delimiters org-roam org-superstar counsel ivy-rich ivy which-key use-package nyan-mode guru-mode emojify doom-themes doom-modeline disable-mouse all-the-icons))
+ '(send-mail-function 'mailclient-send-it))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

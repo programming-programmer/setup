@@ -380,13 +380,14 @@
 *** TODO Keywords
 #+begin_src emacs-lisp
 org-todo-keywords
-      '((sequence "TODO" "PROG" "DONE"))
+      '((sequence "TODO" "PROG" "DONE" "CANCELLED"))
 #+end_src
 
 *** TODO Faces
 #+begin_src emacs-lisp
-org-todo-keyword-faces
-      '(("PROG" . (:foreground "red" :weight bold)))
+  org-todo-keyword-faces
+        '(("PROG" . (:foreground "red" :weight bold))
+          ("CANCELLED" . (foreground "black" :weight bold)))
 #+end_src
 
 *** Source Fontify
@@ -511,7 +512,7 @@ org-todo-keyword-faces
 #+end_src
 
 ** Code block templates
- * Type "<el" then hit Tab to expand template. More can be found here: [[https://orgmode.org/manual/Easy-templates.html]]. This is needed as of Org 9.2
+ * Type "<el" then hit Tab to expand template. More can be found [[https://orgmode.org/manual/Easy-templates.html][here]]. This is needed as of Org 9.2
 #+begin_src emacs-lisp
     (require 'org-tempo)
 
@@ -536,27 +537,6 @@ org-todo-keyword-faces
 ** End of Org Block
 #+begin_src emacs-lisp   
  )
-#+end_src
-
-* Calendar
- * Back to calender, back to emacs :)
-#+begin_src emacs-lisp
-(use-package calfw
-  :disabled
-  :commands cfw:open-org-calendar
-  :config
-  (setq cfw:fchar-junction ?╋
-        cfw:fchar-vertical-line ?┃
-        cfw:fchar-horizontal-line ?━
-        cfw:fchar-left-junction ?┣
-        cfw:fchar-right-junction ?┫
-        cfw:fchar-top-junction ?┯
-        cfw:fchar-top-left-corner ?┏
-        cfw:fchar-top-right-corner ?┓)
-
-  (use-package calfw-org
-    :config
-    (setq cfw:org-agenda-schedule-args '(:timestamp))))
 #+end_src
 
 * Org-Roam

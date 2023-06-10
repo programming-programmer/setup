@@ -104,7 +104,7 @@
                 conf-mode))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
-(add-hook 'emacs-startup-hook 'toggle-frame-maximized)
+(add-hook 'emacs-startup-hook 'toggle-frame-fullscreen)
 
 (defun duplicate-line()
     (interactive)
@@ -155,6 +155,13 @@
 (use-package doom-themes
   :config
   (load-theme 'doom-gruvbox t))
+
+(use-package super-save
+  :defer 1
+  :diminish super-save-mode
+  :config
+  (super-save-mode +1)
+  (setq super-save-auto-save-when-idle t))
 
 (use-package ivy
   :bind (("C-s" . swiper)
@@ -281,6 +288,22 @@ org-agenda-overriding-columns-format
 (add-hook 'org-mode-hook 'prettify-symbols-mode)
 
 )
+
+(use-package calfw
+  :commands cfw:open-org-calendar
+  :config
+  (setq cfw:fchar-junction ?╋
+        cfw:fchar-vertical-line ?┃
+        cfw:fchar-horizontal-line ?━
+        cfw:fchar-left-junction ?┣
+        cfw:fchar-right-junction ?┫
+        cfw:fchar-top-junction ?┯
+        cfw:fchar-top-left-corner ?┏
+        cfw:fchar-top-right-corner ?┓)
+
+  (use-package calfw-org
+    :config
+    (setq cfw:org-agenda-schedule-args '(:timestamp))))
 
 (use-package org-roam
 

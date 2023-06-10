@@ -102,6 +102,7 @@ selection:
 
 cursor:
   style: Underline
+  vi_mode_style: Block
   unfocused_hollow: true
 
 
