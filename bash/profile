@@ -8,6 +8,7 @@ fi
 
 # Default programs:
 export EDITOR="/usr/bin/nvim"
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/notmuch-config"
 
 # Clean-up, clean up, everybody everywhere!
 export XDG_CONFIG_HOME="$HOME/.config"

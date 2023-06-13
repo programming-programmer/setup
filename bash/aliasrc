@@ -2,7 +2,9 @@ alias vim='/usr/bin/nvim'
 
 alias ll='ls -l --color'
 alias la='ls -A --color'
+alias lla='ls -al --color'
 alias ls='ls --color=auto'
+
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'

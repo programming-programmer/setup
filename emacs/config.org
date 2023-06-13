@@ -1,8 +1,7 @@
 #+TITLE: Mer Thich's Emacs Configuration
 #+AUTHOR: Mer Thich (programming-programmer)
 
- * First of all look how sexy this setup is. (Haters wish to be this
-   ✨aesthetic✨) However due to recent events, this is no longer accurate but it sure look banging
+ * First of all look how sexy this setup is. (Haters wish to be this ✨aesthetic✨) However due to recent events, this is no longer accurate but it sure look banging
 
 [[file:emacs_setup.png]]
 
@@ -254,8 +253,7 @@
 #+end_src
 
 ** Emojis 
- * Shamelessly stolen from this [[https://ianyepan.github.io/posts/emacs-emojis/][blog]]. Install Noto Color Emoji beforehand though
-   😔
+ * Shamelessly stolen from this [[https://ianyepan.github.io/posts/emacs-emojis/][blog]]. Install Noto Color Emoji beforehand though 😔
 #+begin_src emacs-lisp
   (use-package emojify
     :config
@@ -273,8 +271,6 @@
 #+begin_src emacs-lisp
   (set-face-attribute 'default t :height 100 :weight 'medium)
   (set-face-attribute 'default t :font "Source Code Pro")
-
-
 #+end_src
 
  * Font for org-mode
@@ -283,7 +279,6 @@
    'user
    '(variable-pitch ((t (:family "Source Code Pro" :height 100 :weight medium))))
    '(fixed-pitch ((t ( :family "Source Code Pro" :height 100)))))
-
 #+end_src 
 
 ** Theme: Gruvbox
@@ -294,15 +289,6 @@
     (load-theme 'doom-gruvbox t))
 #+end_src
 
-** Auto Save
-#+begin_src emacs-lisp
-(use-package super-save
-  :defer 1
-  :diminish super-save-mode
-  :config
-  (super-save-mode +1)
-  (setq super-save-auto-save-when-idle t))
-#+end_src
 * Ivy
  * Ivy is an excellent completion framework for Emacs. It provides a minimal yet powerful selection menu that appears when you open files, switch buffers, and for many other tasks in Emacs. 
 #+begin_src emacs-lisp
@@ -380,14 +366,13 @@
 *** TODO Keywords
 #+begin_src emacs-lisp
 org-todo-keywords
-      '((sequence "TODO" "PROG" "DONE" "CANCELLED"))
+      '((sequence "TODO" "PROG" "DONE"))
 #+end_src
 
 *** TODO Faces
 #+begin_src emacs-lisp
-  org-todo-keyword-faces
-        '(("PROG" . (:foreground "red" :weight bold))
-          ("CANCELLED" . (foreground "black" :weight bold)))
+    org-todo-keyword-faces
+          '(("PROG" . (:foreground "red" :weight bold)))         
 #+end_src
 
 *** Source Fontify
@@ -443,7 +428,7 @@ org-todo-keywords
 *** Org Agenda Column View
 #+begin_src emacs-lisp
   org-agenda-overriding-columns-format
-  "%TODO %ITEM %TAGS"
+  "%PRIORITY %TODO %ITEM %TAGS"
 #+end_src
 
 *** End of Org Defualt Block
@@ -465,6 +450,18 @@ org-todo-keywords
 *** Meeting Template
 #+begin_src emacs-lisp
    ("m" "Scheduled Meeting" entry (file+headline "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org" "Meetings")
+  "* %?\n ")
+#+end_src
+
+*** Reminders Template
+#+begin_src emacs-lisp
+   ("r" "Reminders" entry (file+headline "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org" "Reminders")
+  "* %?\n ")
+#+end_src
+
+*** Idea Template
+#+begin_src emacs-lisp
+   ("i" "Anything Ideas" entry (file+headline "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org" "Ideas")
   "* %?\n ")
 #+end_src
 

@@ -1,3 +1,5 @@
+#+STARTUP: showeverything
+
 * This is an "ideaboard" for future setups
 
 ** No need for GRUB theme because I would only run one distro
@@ -6,6 +8,9 @@
  * Gentoo: This is the end goal for true minimalism but this is for later (Kenny supremacy)
 
 ** I don't care about systemd so either one I don't care :shrug:
+ * Achkusally, 🤓 I think I do *not* like systemd because I was recently
+   englightened by UNIX and realize many other solutions exsist and systemd
+   might be bloated ( I know I sound like a whole ass nerd but staywithme)
 
 ** Rofi would be important
  * Powermenu: Implement some icons (ctrl+alt or meta P)
@@ -31,19 +36,21 @@
 ** DWM or Sway (wayland)
  * Five workspaces
    * empty
-   * Terminal with nvim (development)
    * official browsing (work or school)
      * nyxt or brave or librewolf
      * vim bindings is a must (vimium_c)
      * has to be a stable browser since school and/or work stuff will be on it
      * might have to be chromium or close relative of firefox
+   * Emacs with other stuff
+     - In daemon mode, obviously,
    * fun browsing
      * fun applications too
      * gaming or stuff
    * terminal
-    * you'll have a lot of things in there (rss, music, yadda yadda)    
-   * Emacs with other stuff
-     - In daemon mode, obviously,
+     * you'll have a lot of things in there (rss, music, yadda yadda)
+     * Maybe another terminal/ tmux session for nvim (will move to own workspace
+       if it becomes big)
+
  * Cycle each one with alt+n or alt+p or alt+#
  * Obviously a terminal scrathpad (alt+s)
    

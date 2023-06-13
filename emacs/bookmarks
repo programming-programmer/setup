@@ -2,11 +2,16 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
- (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org")
- (front-context-string . "** TODO Add prog")
- (rear-context-string . "to Brave search\n")
- (position . 1469))
+(("ENGL_C101"
+ (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/SUM_2023/ENGL_C101/20230609180007-engl.org")
+ (front-context-string . ":PROPERTIES:\n:ID")
+ (rear-context-string)
+ (position . 1))
+("Reading List"
+ (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/Books/reading_list.org")
+ (front-context-string . "#+TITLE: Books I")
+ (rear-context-string)
+ (position . 1))
 ("Refile"
  (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org")
  (front-context-string . ":PROPERTIES:\n:ID")
