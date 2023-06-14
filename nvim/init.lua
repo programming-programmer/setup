@@ -1,2 +1,2 @@
-require("mthich15")
+require("mthich")
 
