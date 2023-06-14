@@ -154,7 +154,7 @@
 
 (use-package doom-themes
   :config
-  (load-theme 'doom-gruvbox t))
+  (load-theme 'doom-spacegrey t))
 
 (use-package ivy
   :bind (("C-s" . swiper)
@@ -307,10 +307,6 @@ org-agenda-overriding-columns-format
  :unnarrowed t)
 
 ("c" "class" plain (file "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/RoamTemplates/class.org")
- :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
- :unnarrowed t)
-
-("s" "school.org" plain (file "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/RoamTemplates/school.org")
  :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
  :unnarrowed t)
 

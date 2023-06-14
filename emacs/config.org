@@ -193,7 +193,7 @@
  
 ** Fullscreen on startup baby!
 #+begin_src emacs-lisp
-  (add-hook 'emacs-startup-hook 'toggle-frame-maximized)
+  (add-hook 'emacs-startup-hook 'toggle-frame-fullscreen)
 #+end_src
 
 * Custom Shortcuts
@@ -281,12 +281,11 @@
    '(fixed-pitch ((t ( :family "Source Code Pro" :height 100)))))
 #+end_src 
 
-** Theme: Gruvbox
- * Apparently DOOM themes have better continuity in Emacs, which appears to be true. The nonfunctioning orgmode elipsis is a testament to this.  [[https://github.com/doomemacs/themes][Doom themes]]
+** Theme: Minimal Grey
 #+begin_src emacs-lisp
-  (use-package doom-themes
-    :config
-    (load-theme 'doom-gruvbox t))
+    (use-package doom-themes
+      :config
+      (load-theme 'doom-spacegrey t))
 #+end_src
 
 * Ivy
@@ -363,13 +362,13 @@
   org-ellipsis " ▾"
 #+end_src
 
-*** TODO Keywords
+*** Keywords
 #+begin_src emacs-lisp
 org-todo-keywords
       '((sequence "TODO" "PROG" "DONE"))
 #+end_src
 
-*** TODO Faces
+*** Faces
 #+begin_src emacs-lisp
     org-todo-keyword-faces
           '(("PROG" . (:foreground "red" :weight bold)))         
@@ -441,7 +440,7 @@ org-todo-keywords
     (setq org-capture-templates '(
 #+end_src
 
-*** TODO Template
+*** Template
 #+begin_src emacs-lisp
    ("t" "Todo" entry (file+headline "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org" "Tasks")
     "* TODO %?\n ")
@@ -575,13 +574,6 @@ org-todo-keywords
 *** Class Template
 #+begin_src emacs-lisp
   ("c" "class" plain (file "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/RoamTemplates/class.org")
-   :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-   :unnarrowed t)
-#+end_src
-
-*** school.org Template
-#+begin_src emacs-lisp
-  ("s" "school.org" plain (file "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/RoamTemplates/school.org")
    :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
    :unnarrowed t)
 #+end_src

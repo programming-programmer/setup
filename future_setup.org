@@ -42,7 +42,9 @@
      * has to be a stable browser since school and/or work stuff will be on it
      * might have to be chromium or close relative of firefox
    * Emacs with other stuff
-     - In daemon mode, obviously,
+     - In daemon mode, obviously
+     - I'm placing Emacs next since Emacs relates to school and its nice to have
+       it close
    * fun browsing
      * fun applications too
      * gaming or stuff
