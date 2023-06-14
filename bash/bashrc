@@ -40,7 +40,7 @@ PS1="\[\033[1;32m\]\w $ \[\033[00m\]" # Setting PS1 to show full path
 export PROMPT_DIRTRIM=4 # Trimming path to 4 directories
 
 # lfcd script
-LFCD="/home/mthich15/.config/lf/lfcd"
+LFCD="/home/mthich/.local/bin/lfcd"
 if [ -f "$LFCD" ]; then
     source "$LFCD"
 fi
