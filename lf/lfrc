@@ -17,9 +17,6 @@ cmd open ${{
     # Text
     text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
 
-    # .org Files
-    # text/org) emacs $f;;
-
     # PDF, EPUB, VND
    	application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
 
@@ -159,7 +156,6 @@ map gh cd ~
 map gc cd ~/.config
 map gp cd ~/Projects
 map gn cd /mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes
-map gm cd /mnt/chromeos/GoogleDrive/MyDrive/music
 map gd cd /mnt/chromeos/GoogleDrive/MyDrive
 map gD cd /mnt/chromeos/MyFiles/Downloads
 

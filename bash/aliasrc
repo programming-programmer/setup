@@ -11,10 +11,6 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias tr='tree'
 
-# alias emacs='emacsclient -t'
-alias ytp='yt-dlp --yes-playlist --skip-unavailable-fragments -x --audio-format aac --audio-quality 0 --add-metadata'
-alias newsboat='newsboat -q'
-
 alias gs='git status'
 alias gc='git commit -m'
 alias ga='git add'
