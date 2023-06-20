@@ -1,0 +1,114 @@
+#+TITLE: Previous Configuration
+#+STARTUP: content
+
+* Alacritty
+ * Terminal emulator
+ * It's really pretty
+ * Might move to st on full linux config
+ * Requires cargo (rust package manager to install)
+ * No image previews tho :(
+ * Make sure SourceCodePro is installed
+ * .desktop file
+   #+begin_src sh
+     [Desktop Entry]
+     Name=Alacritty
+     GenericName=Terminal Emulator
+     Exec=/home/mthich/.cargo/bin/alacritty
+     Type=Application
+     Terminal=false
+   #+end_src
+ * Once cargo is installed:
+     #+begin_src sh
+    cargo install alacritty
+     #+end_src
+* Bash
+ * In order to source bash at .config location, you have to add this to /
+   etc/bash.bashrc:
+
+   #+begin_src sh
+     if [-s "${XDG_CONFIG_HOME:-$HOME/.config}/bash/bashrc" ]; then
+         . "${XDG_CONFIG_HOME:=$HOME/.config/}/bash/bashrc"
+     fi
+   #+end_src
+
+   * Minimal prompt no need for starship
+
+   * aliasrc has all the aliases
+   * profile has environment variables (stuff to add to $PATH and default editor)
+     * This has to be linked to the .profile in the home directory
+   
+* cmus
+ * Not much to say install via package manager
+ * Most likely will switch over to mpd and nmcpppcpp (or whatever it is)
+
+* Emacs
+ * Make sure init.el's path to config.org is installed
+ * guru-mode doesn't use-package
+ * use-package making sure is installed doesn't work either so install before
+ * Remember: all-the-fonts-install
+
+ * If there is an error with org, start emacs with "emacs -q" and install org
+   9.x. Then reload emacs
+   
+* lf
+ * Download go file
+   * Remove any previous Go installation by deleting the /usr/local/go folder (if it exists), then extract the archive you just downloaded into /usr/local, creating a fresh Go tree in /usr/local/go:
+      #+begin_src sh
+      sudo rm -rf /usr/local/go && tar -C /usr/local -xzf go1.14.3.linux-amd64.tar.gz
+      #+end_src
+
+   * Add /usr/local/go/bin to the PATH environment variable.
+
+      #+begin_src sh
+      export PATH=$PATH:/usr/local/go/bin
+      #+end_src
+
+   * Verify that you've installed Go by opening a command prompt and typing the following command:
+      #+begin_src sh
+       go version
+      #+end_src
+
+ * install lf from go
+     #+begin_src sh
+    env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
+     #+end_src
+
+* mpv
+ * Install mpv
+
+* nvim
+ * Install packer from the website before because it needs it
+ * write and source init.lua first then install packers stuff
+ * For pyright and clangd (python and c++ respectively) install npm and node
+   (I'm not a fulltime c++ coder so no biggie)
+
+* Tmux
+ * Install tmux
+   #+begin_src sh
+tmux source /path/to/tmux/config
+   #+end_src
+ * Suffer from success
+
+* Zathura
+ * Install zathura
+ * Not much besides that
+
+* Rust
+ * Install via rustup (requires curl)
+   
+   #+begin_src sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   #+end_src
+
+* Java
+ * Download JDK from reputable source
+ * untar/unzip in some direcotry (ex. /usr or /opt)
+ * Add to path (should already be in /bash/profile)
+
+* Python
+ * Install python3 from package manager
+
+* C/C++
+ * Install npm for nvim stuff
+ * Comes by default
+ * I may be forgetting something... 
