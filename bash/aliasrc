@@ -1,4 +1,5 @@
-alias vim='/usr/bin/nvim'
+alias vim='/home/mthich/.local/share/applications/nvim-linux64/bin/nvim'
+alias nvim='/home/mthich/.local/share/applications/nvim-linux64/bin/nvim'
 
 alias ll='ls -l --color'
 alias la='ls -A --color'
@@ -10,7 +11,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias tr='tree'
 
-alias emacs='emacsclient --create-frame --alternate-editor=""'
+# alias emacs='emacsclient -t'
 alias ytp='yt-dlp --yes-playlist --skip-unavailable-fragments -x --audio-format aac --audio-quality 0 --add-metadata'
 alias newsboat='newsboat -q'
 

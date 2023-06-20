@@ -1,11 +1,9 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
 vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+	-- Look at packer, managing itself and whatnot
+	use('wbthomason/packer.nvim')
+
 
   -- TREESITTER --
   use {
@@ -18,20 +16,17 @@ return require('packer').startup(function(use)
 
   use('nvim-treesitter/playground')
 
-
   -- FILE NAV --
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
+      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+      -- or                            , branch = '0.1.x',
+      requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   use('ThePrimeagen/harpoon')
   use('stevearc/oil.nvim')
 
-
   -- DEV --
-  use('theprimeagen/refactoring.nvim')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
   use('lukas-reineke/indent-blankline.nvim')
@@ -82,7 +77,6 @@ return require('packer').startup(function(use)
   -- Java
   use('mfussenegger/nvim-jdtls')
 
-
   -- AESTHETICS --
   use("ellisonleao/gruvbox.nvim")
 
@@ -93,8 +87,6 @@ return require('packer').startup(function(use)
       end
   }
 
-
   -- MISC --
   use('ThePrimeagen/vim-be-good')
-
 end)

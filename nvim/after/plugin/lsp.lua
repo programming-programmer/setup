@@ -2,11 +2,13 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+-- To install bashls and pyright, you have to install npm beforehand
+-- Which I'm too lazy to do
 lsp.ensure_installed({
-  'bashls',
+  --'bashls',
   'clangd',
   'jdtls',
-  'pyright',
+  --'pyright',
 })
 
 -- Fix Undefined global 'vim'

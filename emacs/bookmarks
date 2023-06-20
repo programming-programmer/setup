@@ -1,0 +1,40 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored-marker"
+ (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org")
+ (front-context-string . "** TODO Work ahe")
+ (rear-context-string . "ad for the week\n")
+ (position . 2041))
+("org-refile-last-stored"
+ (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org")
+ (front-context-string . "** TODO Work ahe")
+ (rear-context-string . "ad for the week\n")
+ (position . 2041))
+("org-capture-last-stored"
+ (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org")
+ (front-context-string . "** TODO Work ahe")
+ (rear-context-string . "set-prefix-key)\n")
+ (position . 2009))
+("Reading List"
+ (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/Books/reading_list.org")
+ (front-context-string . "#+TITLE: Books I")
+ (rear-context-string)
+ (position . 1))
+("Refile"
+ (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org")
+ (front-context-string . ":PROPERTIES:\n:ID")
+ (rear-context-string)
+ (position . 1))
+("ENGL_C101"
+ (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/SUM_2023/ENGL_C101/20230609180007-engl.org")
+ (front-context-string . ":PROPERTIES:\n:ID")
+ (rear-context-string)
+ (position . 1))
+("Config"
+ (filename . "~/.config/emacs/config.org")
+ (front-context-string . "#+TITLE: Mer Thi")
+ (rear-context-string)
+ (position . 1))
+)
