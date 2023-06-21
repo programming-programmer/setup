@@ -22,9 +22,6 @@
 
 (server-start)
 
-(set-frame-parameter (selected-frame) 'alpha '(85 . 50))
-(add-to-list 'default-frame-alist '(alpha . (85 . 50)))
-
 (setq-default
  ad-redefinition-action 'accept                   ; Silence warnings for redefinition
  sentence-end-double-space nil                    ; Double space after a period!? Inhumane!
@@ -222,7 +219,7 @@
  :prefix "SPC"
 
 "f" '(counsel-find-file :which-key "find file")
-"." '(counsel-recentf :which-key "recent files")
+"r" '(counsel-recentf :which-key "recent files")
 "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
 "SPC" 'counsel-M-x
 "C-q" '(save-buffers-kill-terminal :which-key "quit emacs")
@@ -315,6 +312,7 @@
   "C-S-e" 'evil-end-of-line
   "C-n" 'evil-next-visual-line
   "C-p" 'evil-previous-visual-line
+      "C-y" 'yank
   )
 
 (use-package ivy

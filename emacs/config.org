@@ -440,6 +440,7 @@
     "C-S-e" 'evil-end-of-line
     "C-n" 'evil-next-visual-line
     "C-p" 'evil-previous-visual-line
+        "C-y" 'yank
     )
 #+end_src
 * Ivy
