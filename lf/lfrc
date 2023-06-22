@@ -154,6 +154,7 @@ map ad all-dirs
 map gg top
 map gh cd ~
 map gc cd ~/.config
+map gp cd ~/.local/
 map gp cd ~/Projects
 map gn cd /mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes
 map gd cd /mnt/chromeos/GoogleDrive/MyDrive

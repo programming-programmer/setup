@@ -1,9 +1,8 @@
 #+TITLE: Mer Thich's Emacs Configuration
 #+AUTHOR: Mer Thich (programming-programmer)
 
- * First of all look how sexy this setup is. (Haters wish to be this ✨aesthetic✨) However due to recent events, this is no longer accurate but it sure look banging
+ * Very evil things follow. Beware! 👻
 
-[[file:emacs_setup.png]]
 * Preface
  * This is copied from what_it_was.txt
     * Make sure init.el's path to config.org is installed
@@ -408,6 +407,7 @@
   "wm" '(jib/toggle-maximize-buffer :which-key "maximize buffer")
   "wN" '(make-frame :which-key "make frame")
   "wd" '(evil-window-delete :which-key "delete window")
+  "wD" '(delete-other-windows :which-key "delete window")
   "w-" '(jib/split-window-vertically-and-switch :which-key "split below")
   "w/" '(jib/split-window-horizontally-and-switch :which-key "split right")
   "w{" '(enlarge-window-horizontally :which-key "expand horizon")
@@ -451,7 +451,7 @@
     "C-S-e" 'evil-end-of-line
     "C-n" 'evil-next-visual-line
     "C-p" 'evil-previous-visual-line
-        "C-y" 'yank
+    "C-y" 'yank
     )
 #+end_src
 * Ivy
@@ -678,9 +678,9 @@ org-todo-keywords
  "" nil
  "a" '(org-agenda :which-key "org agenda")
  "c" '(org-capture :which-key "org-capture")
- "s" '(org-agenda-schedule :which-key "schedule")
- "," '(org-agenda-schedule :which-key "schedule") ;; quick access
  "d" '(org-agenda-deadline :which-key "deadline")
+ "s" '(org-agenda-schedule :which-key "schedule") 
+ "," '(org-agenda-deadline :which-key "deadline") ;; quick access
  "t" '(org-agenda-set-tags :which-key "set tags")
  ;; clocking
  "c" '(nil :which-key "clocking")
@@ -878,15 +878,15 @@ org-todo-keywords
 * You have now reached the end of the configuration.
  * Do you cringe or are you enlightened? Have a great day :)
 #+begin_src 
- _________________________________________
-/ Invent and fit; have fits and reinvent! \
-| We toast the Lisp programmer who pens   |
-| his thoughts within nests of            |
-\\ parentheses.                           /
-  ---------------------------------------
-         \   ^__^ 
-          \  (oo)\_______
-             (__)\       )\/\\
-                 ||----w |
-                 ||     ||
+  _________________________________________
+ / Invent and fit; have fits and reinvent! \
+ | We toast the Lisp programmer who pens   |
+ | his thoughts within nests of            |
+ \\ parentheses.                           /
+   ---------------------------------------
+          \   ^__^ 
+           \  (oo)\_______
+              (__)\       )\/\\
+                  ||----w |
+                  ||     ||
 #+end_src
