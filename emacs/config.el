@@ -143,10 +143,12 @@
   (setq evil-want-keybinding t) ;; load Evil keybindings in other modes
   (setq evil-want-fine-undo t)
   (setq evil-want-Y-yank-to-eol t)
+  (setq evil-mode-line-format nil)
   :config
   ;; ----- Keybindings
-  (define-key evil-window-map "\C-w" 'evil-delete-buffer) ;; Maps C-w C-w to evil-delete-buffer (The first C-w puts you into evil-window-map)
   (define-key evil-motion-state-map "/" 'swiper)
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
   ;; ----- Setting cursor colors
   (setq evil-emacs-state-cursor    '("#649bce" box))
@@ -173,11 +175,14 @@
   (doom-modeline-mode)
   (setq doom-modeline-enable-word-count nil
         doom-modeline-buffer-encoding nil
+        ;; Icons ---
+        doom-modeline-modal nil
         doom-modeline-icon nil ; Enable/disable all icons
         doom-modeline-modal-icon nil ;; Icon for Evil mode
         doom-modeline-major-mode-icon nil
         doom-modeline-major-mode-color-icon nil
         doom-modeline-buffer-state-icon nil
+
         doom-modeline-bar-width 3))
 
 (set-face-attribute 'default t :height 100 :weight 'medium)
@@ -221,18 +226,20 @@
 "f" '(counsel-find-file :which-key "find file")
 "r" '(counsel-recentf :which-key "recent files")
 "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
-"SPC" 'counsel-M-x
+"SPC" '(counsel-M-x :which-key "M-x")
 "C-q" '(save-buffers-kill-terminal :which-key "quit emacs")
-"c" 'org-capture
+"c" '(org-capture :which-key "org-capture")
+"u" '(universal-argument :which-key "universal-argument")
+"z" '(repeat :which-key "repeat")
 
 ;; "Applications"
 "a" '(nil :which-key "applications")
 "ao" '(org-agenda :which-key "org-agenda")
 ;; "am" '(mu4e :which-key "mu4e")
 ;; "aC" '(calc :which-key "calc")
-"ac" '(org-capture :which-key "org-capture")
 
 "ad" '(dired :which-key "dired")
+"aD" '(dired-jump :which-key "dired jump")
 
 "b" '(nil :which-key "buffer")
 "bb" '(counsel-switch-buffer :which-key "switch buffers")
@@ -282,6 +289,10 @@
 "wd" '(evil-window-delete :which-key "delete window")
 "w-" '(jib/split-window-vertically-and-switch :which-key "split below")
 "w/" '(jib/split-window-horizontally-and-switch :which-key "split right")
+"w{" '(enlarge-window-horizontally :which-key "expand horizon")
+"w}" '(shrink-window-horizontally :which-key "shrink horizon")
+"w+" '(balance-windows :which-key "balance windows")
+"w^" '(enlarge-window :which-key "enlarge verizon")
 "wl" '(evil-window-right :which-key "evil-window-right")
 "wh" '(evil-window-left :which-key "evil-window-left")
 "wj" '(evil-window-down :which-key "evil-window-down")
@@ -428,8 +439,9 @@ org-agenda-overriding-columns-format
  "S" '(jib/org-schedule-tomorrow :which-key "schedule tmrw")
  "d" '(org-deadline :which-key "deadline")
  "g" '(counsel-org-goto :which-key "goto heading")
- "t" '(counsel-org-tag :which-key "set tags")
+ ":" '(counsel-org-tag :which-key "set tags")
  "p" '(org-set-property :which-key "set property")
+ "t" '(org-todo :which-key "toggle TODO state")
  "e" '(org-export-dispatch :which-key "export org")
  "." '(org-toggle-narrow-to-subtree :which-key "toggle narrow to subtree")
 
@@ -440,7 +452,6 @@ org-agenda-overriding-columns-format
  "i" '(nil :which-key "insert")
 
  "il" '(org-insert-link :which-key "org-insert-link")
- "l" '(org-insert-link :which-key "org-insert-link") ;; More convenient access
  "iL" '(counsel-org-link :which-key "counsel-org-link")
 
  "is" '(nil :which-key "insert stamp")

@@ -14,9 +14,9 @@
  (position . 2041))
 ("org-capture-last-stored"
  (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/20230527140013-refile.org")
- (front-context-string . "** TODO Work ahe")
- (rear-context-string . "set-prefix-key)\n")
- (position . 2009))
+ (front-context-string . "** Setup keybind")
+ (rear-context-string . "ly Linux system\n")
+ (position . 2273))
 ("Reading List"
  (filename . "/mnt/chromeos/GoogleDrive/MyDrive/SchoolDocuments/Notes/Books/reading_list.org")
  (front-context-string . "#+TITLE: Books I")

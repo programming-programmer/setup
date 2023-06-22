@@ -10,7 +10,7 @@
 ** I don't care about systemd so either one I don't care :shrug:
  * Achkusally, 🤓 I think I do *not* like systemd because I was recently
    englightened by UNIX and realize many other solutions exsist and systemd
-   might be bloated ( I know I sound like a whole ass nerd but #staywithme)
+   might be bloated (I know I sound like a whole ass nerd but #staywithme)
 
 ** Rofi would be important
  * Powermenu: Implement some icons (ctrl+alt or meta P)
@@ -29,6 +29,7 @@
      - wifi menu
      - calculator
      - emoji picker
+     - download queued up newsboat videos (luke smith has a script)
      - Pull up refile.org on emacs (would be for TODO)
  * Application Menu: List all applications and put (if applicable) shortcuts
    aside (ctrl+alt or meta A)
@@ -88,7 +89,8 @@
    the plank ez)
  * I have no desire to switch out the mouse. It is good :)
  * A monitor + docked laptop or laptop end setup sounds nice
- * One libre smartphone for outside stuff/work + flipphone with all important contacts
+ * One libre smartphone for outside stuff/work + flipphone/librephone(titan slim
+   looks cool, qwerty keebs are cool) with all important contacts
    * GrapheneOS looks cool
    * fliphone would be simple: talk, text, all music downloaded _(MAIN BAE THO)_
  * A messenger bag to hold all this because I'm still a girlpop gorlie at heart
